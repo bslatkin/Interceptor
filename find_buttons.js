@@ -1,3 +1,6 @@
+var TWITTER_REGEX =
+    /^http(s?):\/\/([^\.]+\.)?twitter.com\/(share|intent|widgets)/;
+
 // This is all fake config that should be in local storage.
 var config = {
   'http://www.blogger.com/': {
@@ -33,14 +36,30 @@ function createButton(parent, title, url) {
 
 
 function createIfTwitterButton(target) {
-  // Try to identify the Twitter button's markup.
-  if (target.href && target.getAttribute('data-url') &&
-      !!target.href.match(/^http(s?):\/\/twitter.com\/(share|intent)/)) {
-    createButton(target.parentNode,
-        target.getAttribute('data-text') || target.getAttribute('data-url'),
-        target.getAttribute('data-url'));
-    // TODO: Detect the size of the button. If it's really small, then just
-    // use an icon-only action instead of a full button.
+  var isButton = false;
+  var parentNode = target.parentNode;
+  var text = '';
+  var url = '';
+
+  // TODO: Detect the size of the button. If it's really small, then just
+  // use an icon-only action instead of a full button.
+
+  if (target.tagName == 'A' &&
+      target.href &&
+      target.getAttribute('data-url') &&
+      !!target.href.match(TWITTER_REGEX)) {
+    isButton = true;
+    url = target.getAttribute('data-url');
+    text = target.getAttribute('data-text');
+  } else if (target.tagName == 'IFRAME' &&
+             target.src.match(TWITTER_REGEX)) {
+    isButton = true;
+    url = window.location.href;
+  }
+
+  if (isButton && !parentNode.interceptorButton) {
+    parentNode.interceptorButton = true;
+    createButton(parentNode, text || url, url);
     return true;
   }
   return false;
@@ -70,9 +89,14 @@ function bodyLoaded() {
   stopListening();
 
   // Try to find Twitter buttons after body load.
+  var found = false;
   var allLinks = document.getElementsByTagName('a');
   for (var i = 0, n = allLinks.length; i < n; i++) {
-    createIfTwitterButton(allLinks[i]);
+    found = found || createIfTwitterButton(allLinks[i]);
+  }
+  var allIframes = document.getElementsByTagName('iframe');
+  for (var i = 0, n = allIframes.length; i < n; i++) {
+    createIfTwitterButton(allIframes[i]);
   }
 }
 

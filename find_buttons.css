@@ -23,3 +23,7 @@
 .interceptor-button:hover {
   text-shadow: 1px 1px 4px rgba(110, 110, 110, 0.5);
 }
+iframe + .interceptor-button {
+  margin-top: 8px;
+  margin-bottom: 8px;
+}
