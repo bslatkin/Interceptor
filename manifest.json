@@ -11,6 +11,10 @@
     "https://*/*"
   ],
   "content_scripts": [
-    ""
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "js": ["find_buttons.js"],
+      "run_at": "document_end"
+    }
   ]
 }
