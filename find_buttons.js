@@ -1,6 +1,7 @@
 var TWITTER_REGEX =
     /^http(s?):\/\/([^\.]+\.)?twitter.com\/(share|intent|widgets)/;
 
+
 // This is all fake config that should be in local storage.
 var config = {
   'http://www.blogger.com/': {
@@ -66,6 +67,23 @@ function createIfTwitterButton(target) {
 }
 
 
+function createIfFacebookButton(target) {
+  var parentNode = target.parentNode;
+  console.log('facebook!');
+  console.log(target);
+
+  // TODO: Detect the size of the button. If it's really small, then just
+  // use an icon-only action instead of a full button.
+
+  if (target.tagName == 'FB:LIKE' && target.href) {
+    parentNode.interceptorButton = true;
+    createButton(parentNode, target.href, target.href);
+    return true;
+  }
+  return false;
+}
+
+
 function handleDomRemove(e) {
   var target = e.target;
   if (!target) {
@@ -88,7 +106,7 @@ function bodyLoaded() {
 
   stopListening();
 
-  // Try to find Twitter buttons after body load.
+  // Try to find Twitter buttons
   var found = false;
   var allLinks = document.getElementsByTagName('a');
   for (var i = 0, n = allLinks.length; i < n; i++) {
@@ -96,7 +114,17 @@ function bodyLoaded() {
   }
   var allIframes = document.getElementsByTagName('iframe');
   for (var i = 0, n = allIframes.length; i < n; i++) {
-    createIfTwitterButton(allIframes[i]);
+    found = found || createIfTwitterButton(allIframes[i]);
+  }
+
+  if (found) {
+    return;
+  }
+
+  // Try to find Facebook buttons if nothing else found.
+  var allFbButtons = document.getElementsByTagName('fb:like');
+  for (var i = 0, n = allFbButtons.length; i < n; i++) {
+    createIfFacebookButton(allFbButtons[i]);
   }
 }
 

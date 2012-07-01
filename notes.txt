@@ -8,3 +8,11 @@ Use a URL redirector and template:
 
 Send to WordPress 
 URL pattern: http://www.YOURDOMAINHERE.com/wp-admin/press-this.php?u=${url}&t=${title}&s=${source}&v=2
+
+
+
+Conclusions of this investigation:
+- Integrating into the page markup is awful
+- All the various edge-cases with AJAX are awful (Gizmodo)
+- The Chrome extension's button itself could be the general share action
+- The extra part is auto-configuring that action based on discovery recipes that watch your browsing behavior and auto-prompt you for configuring new sites to share to.
