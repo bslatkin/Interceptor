@@ -12,8 +12,19 @@ From Google Reader "send to":
   ${short-url}A shortened URL that redirects to the item
 
 For Blogger's BlogThis widget:
-URL: http://www.blogger.com/blog-this.g
+URL: http://www.blogger.com/blog-this.g?t=http://example.com&n=Some+stuff+here&u=http://example.com
 Params:
   t: <a href="http://news.ycombinator.com/item?id=4185481">Comments</a>
   n: Google's project glass lets technology slip into the background
   u: http://bits.blogs.nytimes.com/2012/07/01/google%E2%80%99s-project-glass-lets-technology-slip-into-the-background/
+
+http://www.blogger.com/blog-this.g?t=My+summary+here&n=Some+stuff+here&u=http://www.example.com
+
+
+Example metadata:
+URL: http://gigaom.com/2012/06/30/careful-twitter-remember-what-happened-to-myspace-and-digg/
+
+  <a class="twitter-share-button" href="http://twitter.com/share?url=http%3A%2F%2Fgigaom.com%2F2012%2F06%2F30%2Fcareful-twitter-remember-what-happened-to-myspace-and-digg%2F" data-text="Careful, Twitter &#8212; remember what happened to MySpace and&nbsp;Digg" data-url="http://gigaom.com/2012/06/30/careful-twitter-remember-what-happened-to-myspace-and-digg/">Tweet</a>
+
+  <fb:like show_faces="false" layout="button_count" href="http://gigaom.com/2012/06/30/careful-twitter-remember-what-happened-to-myspace-and-digg/"></fb:like>
+
