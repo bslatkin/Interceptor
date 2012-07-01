@@ -13,6 +13,7 @@
   "content_scripts": [
     {
       "matches": ["http://*/*", "https://*/*"],
+      "css": ["find_buttons.css"],
       "js": ["find_buttons.js"],
       "run_at": "document_start"
     }

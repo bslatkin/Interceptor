@@ -1,0 +1,25 @@
+.interceptor-button {
+  padding: 0 4px 0 24px;
+  height: 18px;
+  display: inline-block;
+  margin: 0 10px 0 0;
+  background-repeat: no-repeat;
+  background-size: auto 18px;
+  text-align: center;
+  vertical-align: top;
+  font-size: 12px;
+  font-family: sans-serif;
+  line-height: 18px;
+  border: 1px solid #ccc;
+  font-weight: bold;
+}
+.interceptor-button:link,
+.interceptor-button:visited,
+.interceptor-button:active,
+.interceptor-button:hover {
+  color: #000;
+  text-decoration: none;
+}
+.interceptor-button:hover {
+  text-shadow: 1px 1px 4px rgba(110, 110, 110, 0.5);
+}
