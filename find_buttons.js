@@ -32,6 +32,19 @@ function createButton(parent, title, url) {
 }
 
 
+function createIfTwitterButton(target) {
+  // Try to identify the Twitter button's markup.
+  if (target.href && target.getAttribute('data-url') &&
+      !!target.href.match(/^http(s?):\/\/twitter.com\/(share|intent)/)) {
+    createButton(target.parentNode,
+        target.getAttribute('data-text'),
+        target.getAttribute('data-url'));
+    return true;
+  }
+  return false;
+}
+
+
 function handleDomRemove(e) {
   var target = e.target;
   if (!target) {
@@ -41,16 +54,7 @@ function handleDomRemove(e) {
     return;
   }
 
-  // TODO: Find the common ancestor of these buttons, then replicate the local
-  // dom structure so we can reproduce the styling around the Twitter/FB/G+
-  // buttons when we insert our new button. For now do something stupid.
-
-  // Try to identify the Twitter button's markup.
-  if (target.href && target.href.indexOf('http://twitter.com/share?') == 0) {
-    createButton(target.parentNode,
-        target.getAttribute('data-text'),
-        target.getAttribute('data-url'));
-  }
+  createIfTwitterButton(target);
 }
 
 
@@ -59,9 +63,21 @@ function stopListening() {
 }
 
 
+function bodyLoaded() {
+
+  stopListening();
+
+  // Try to find Twitter buttons after body load.
+  var allLinks = document.getElementsByTagName('a');
+  for (var i = 0, n = allLinks.length; i < n; i++) {
+    createIfTwitterButton(allLinks[i]);
+  }
+}
+
+
 function init() {
   document.addEventListener("DOMNodeRemoved", handleDomRemove, true);
-  window.addEventListener("load", stopListening);
+  window.addEventListener("load", bodyLoaded);
 }
 
 
