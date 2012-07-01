@@ -37,8 +37,10 @@ function createIfTwitterButton(target) {
   if (target.href && target.getAttribute('data-url') &&
       !!target.href.match(/^http(s?):\/\/twitter.com\/(share|intent)/)) {
     createButton(target.parentNode,
-        target.getAttribute('data-text'),
+        target.getAttribute('data-text') || target.getAttribute('data-url'),
         target.getAttribute('data-url'));
+    // TODO: Detect the size of the button. If it's really small, then just
+    // use an icon-only action instead of a full button.
     return true;
   }
   return false;

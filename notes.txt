@@ -1,3 +1,6 @@
+Need some discovery:
+
+
 Use a URL redirector and template:
   http://en.wikipedia.org/wiki/URL_Template
   http://example.com/people/{firstName}-{lastName}/SSN
