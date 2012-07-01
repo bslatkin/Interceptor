@@ -1,0 +1,19 @@
+Use a URL redirector and template:
+  http://en.wikipedia.org/wiki/URL_Template
+  http://example.com/people/{firstName}-{lastName}/SSN
+
+Send to WordPress 
+URL pattern: http://www.YOURDOMAINHERE.com/wp-admin/press-this.php?u=${url}&t=${title}&s=${source}&v=2
+
+From Google Reader "send to":
+  ${source}The source of the item
+  ${title}The title of the item
+  ${url}The URL of the item
+  ${short-url}A shortened URL that redirects to the item
+
+For Blogger's BlogThis widget:
+URL: http://www.blogger.com/blog-this.g
+Params:
+  t: <a href="http://news.ycombinator.com/item?id=4185481">Comments</a>
+  n: Google's project glass lets technology slip into the background
+  u: http://bits.blogs.nytimes.com/2012/07/01/google%E2%80%99s-project-glass-lets-technology-slip-into-the-background/
