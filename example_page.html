@@ -1,0 +1,41 @@
+<!-- Run this example with: 
+
+python -m 'SimpleHTTPServer' 8000 path/to/interceptor/directory
+
+Then hit http://localhost:8000/example_page.html
+
+-->
+
+<head>
+<script type="text/javascript" src="http://platform.twitter.com/widgets.js"></script>
+<script src="//platform.linkedin.com/in.js" type="text/javascript"></script>
+
+<body>
+
+<div id="fb-root"></div>
+<script>(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "//connect.facebook.net/en_US/all.js#xfbml=1";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));</script>
+
+
+<div>
+  <ul>
+    <li class="twitter-me facebook-bottom"><a class="twitter-share-button" href="http://twitter.com/share?url=http%3A%2F%2Fgigaom.com%2F2012%2F06%2F30%2Fcareful-twitter-remember-what-happened-to-myspace-and-digg%2F" data-text="Careful, Twitter &#8212; remember what happened to MySpace and&nbsp;Digg" data-url="http://gigaom.com/2012/06/30/careful-twitter-remember-what-happened-to-myspace-and-digg/">Tweet</a></li>
+    <li class="linkedin-share"><script type="IN/Share" data-url="http://gigaom.com/2012/06/30/careful-twitter-remember-what-happened-to-myspace-and-digg/" data-counter="right"></script></li>
+    <li class="facebook-bottom"><fb:like show_faces="false" layout="button_count" href="http://gigaom.com/2012/06/30/careful-twitter-remember-what-happened-to-myspace-and-digg/"></fb:like></li>
+    <li class="google-share"><g:plusone size="medium" href="http://gigaom.com/2012/06/30/careful-twitter-remember-what-happened-to-myspace-and-digg/"></g:plusone>
+  </ul>
+</div>
+
+
+<script type="text/javascript">
+  (function() {
+    var po = document.createElement('script'); po.type = 'text/javascript'; po.async = true;
+    po.src = 'https://apis.google.com/js/plusone.js';
+    var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(po, s);
+  })();
+</script>
